@@ -1,0 +1,1 @@
+export const words = ['BOOK', 'CATFISH', 'JUSTICE', 'INTENSE', 'CRIME', 'CAR', 'FATAL', 'POLICE'];
