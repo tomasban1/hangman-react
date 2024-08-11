@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { randomWord } from "../words/GenerateWord";
-
-export let rezData = 6;
+import { Hangman } from "../hangman/hangman";
 
 export function CheckLetter(){
 
@@ -16,13 +15,13 @@ export function CheckLetter(){
     ? <ul key={index} className="wordLetter">{letter}</ul> 
     : <ul key={index} className="wordLetter"></ul>);
 
+    
     let [count, setCount] = useState(6);
     function loseLife(){
         setCount(count - 1);
-        rezData--;
+        
     }
-
-  
+    
     const Keyboard =
         keyboard.map((letter) => <button onClick={(e) => {if(randomWord.includes(letter) && gameOver === false){
                     setCorrect([...correct, letter])
@@ -41,11 +40,13 @@ export function CheckLetter(){
             return <p>{count}</p>
         }
     }
+   console.log(count);
    
     
     
     return (
         <>
+            <Hangman data={count} />
             <div className="letterContainer">
                 {hiddenWord}
             </div>
@@ -57,5 +58,6 @@ export function CheckLetter(){
         </>    
     );
 }
+
 
 
