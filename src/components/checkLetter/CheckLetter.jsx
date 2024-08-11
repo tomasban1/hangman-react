@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { randomWord } from "../words/GenerateWord";
 
+export let rezData = 6;
 
 export function CheckLetter(){
 
@@ -9,7 +10,7 @@ export function CheckLetter(){
                     'F', 'G', 'H', 'J', 'K', 'L', 'Z', 
                     'X', 'C', 'V', 'B', 'N', 'M'];
     
-
+    
     const [correct, setCorrect] = useState([]);
     const hiddenWord = randomWord.map((letter,index) => correct.includes(letter) 
     ? <ul key={index} className="wordLetter">{letter}</ul> 
@@ -17,7 +18,8 @@ export function CheckLetter(){
 
     let [count, setCount] = useState(6);
     function loseLife(){
-        setCount(count - 1)
+        setCount(count - 1);
+        rezData--;
     }
 
   
@@ -25,9 +27,9 @@ export function CheckLetter(){
         keyboard.map((letter) => <button onClick={(e) => {if(randomWord.includes(letter) && gameOver === false){
                     setCorrect([...correct, letter])
                     e.currentTarget.classList.add('highlightCorrect')
-                }else{if(gameOver === false){e.currentTarget.classList.add('highlightIncorrect')
-                    loseLife()
-                }}}} className="boardBtn" key={letter}>{letter}</button>)
+                }else{if(gameOver === false){
+                    e.currentTarget.classList.add('highlightIncorrect')
+                    loseLife()}}}} className="boardBtn" key={letter}>{letter}</button>)
     
     let gameOver = false; 
     const Counter = () => {
@@ -39,6 +41,7 @@ export function CheckLetter(){
             return <p>{count}</p>
         }
     }
+   
     
     
     return (

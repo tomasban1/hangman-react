@@ -1,5 +1,6 @@
 import './App.css';
-import { CheckLetter } from './components/checkLetter/CheckLetter';
+import { CheckLetter, rezData } from './components/checkLetter/CheckLetter';
+import { Hangman } from './components/hangman/hangman';
 
 function App() {
   
@@ -10,9 +11,7 @@ function App() {
         <h1>Hangman</h1>
       </header>
       <main>
-        <div className='hangmanContainer'>
-          <img src="./src/img/hangman-0.svg" alt="" />
-        </div>
+        <Hangman data={rezData}/>
         <CheckLetter />
         <div>
           <button className='restartBtn'>Start new game!</button>
