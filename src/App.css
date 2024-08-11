@@ -16,12 +16,13 @@ h1{
 .hangmanContainer{
   display: flex;
   justify-content: center;
-  padding: 70px;
+  padding: 50px;
 }
 .letterContainer{
   display: flex;
   justify-content: center;
   gap: 10px;
+  
 }
 
 .wordLetter{
@@ -30,6 +31,8 @@ h1{
   font-size: 20px;
   font-family: cursive;
   border-bottom: 3px solid black;
+  height: 35px;
+  
 }
 
 .keyboardContainer{
@@ -51,4 +54,19 @@ border-radius: 10px;
 }
 .hidden{
   display: none;
+}
+.restartBtn{
+  padding: 5px 10px;
+  border-radius: 10px;
+  cursor: pointer;
+}
+.restartBtn:hover{
+  transform: scale(1.1);
+}
+
+.highlightCorrect{
+  background-color: green;
+}
+.highlightIncorrect{
+  background-color: red;
 }

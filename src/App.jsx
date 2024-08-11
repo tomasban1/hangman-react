@@ -15,7 +15,7 @@ function App() {
         </div>
         <CheckLetter />
         <div>
-          <button>Start new game!</button>
+          <button className='restartBtn'>Start new game!</button>
         </div>
         
       </main>

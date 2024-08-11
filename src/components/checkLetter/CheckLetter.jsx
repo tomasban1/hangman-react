@@ -9,14 +9,13 @@ export function CheckLetter(){
                     'F', 'G', 'H', 'J', 'K', 'L', 'Z', 
                     'X', 'C', 'V', 'B', 'N', 'M'];
     
+
     const [correct, setCorrect] = useState([]);
     const hiddenWord = randomWord.map((letter,index) => correct.includes(letter) 
     ? <ul key={index} className="wordLetter">{letter}</ul> 
     : <ul key={index} className="wordLetter"></ul>);
-    
-    
-    
 
+        
 
     return (
         <>
@@ -24,9 +23,10 @@ export function CheckLetter(){
                 {hiddenWord}
             </div>
             <div className="keyboardContainer">
-                {keyboard.map((letter) => <button onClick={() => {if(randomWord.includes(letter)){
+                {keyboard.map((letter) => <button onClick={(e) => {if(randomWord.includes(letter)){
                     setCorrect([...correct, letter])
-                }}} className="boardBtn" key={letter}>{letter}</button>)}
+                    e.currentTarget.classList.add('highlightCorrect')
+                }else{e.currentTarget.classList.add('highlightIncorrect')}}} className="boardBtn" key={letter}>{letter}</button>)}
             </div>
            
         </>    
