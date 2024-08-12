@@ -11,7 +11,6 @@ function App() {
         <h1>Hangman</h1>
       </header>
       <main>
-        
         <CheckLetter />
         <div>
           <button className='restartBtn'>Start new game!</button>

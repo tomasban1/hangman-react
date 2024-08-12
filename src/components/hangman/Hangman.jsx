@@ -9,7 +9,7 @@ import  img6 from "/src/components/img/hangman-6.svg";
 
 
 export function Hangman(params){
-    const HandleImg = params.data === 6 
+    const handleImg = params.data === 6 
     ? img0 
     : params.data === 5 
     ? img1 
@@ -27,7 +27,7 @@ export function Hangman(params){
     
     return (
         <div className='hangmanContainer'>
-          <img src={HandleImg} alt=""/>
+          <img src={handleImg} alt=""/>
         </div>
     );
 

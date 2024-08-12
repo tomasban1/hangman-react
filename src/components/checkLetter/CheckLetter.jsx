@@ -11,7 +11,7 @@ export function CheckLetter(){
     
     
     const [correct, setCorrect] = useState([]);
-    const hiddenWord = randomWord.map((letter,index) => correct.includes(letter) 
+    const hiddenWord = randomWord.map((letter, index) => correct.includes(letter) 
     ? <ul key={index} className="wordLetter">{letter}</ul> 
     : <ul key={index} className="wordLetter"></ul>);
 
@@ -22,8 +22,7 @@ export function CheckLetter(){
         
     }
     
-    const Keyboard =
-        keyboard.map((letter) => <button onClick={(e) => {if(randomWord.includes(letter) && gameOver === false){
+    const buttons = keyboard.map((letter) => <button onClick={(e) => {if(randomWord.includes(letter) && gameOver === false){
                     setCorrect([...correct, letter])
                     e.currentTarget.classList.add('highlightCorrect')
                 }else{if(gameOver === false){
@@ -42,8 +41,6 @@ export function CheckLetter(){
     }
    console.log(count);
    
-    
-    
     return (
         <>
             <Hangman data={count} />
@@ -51,7 +48,7 @@ export function CheckLetter(){
                 {hiddenWord}
             </div>
             <div className="keyboardContainer">
-                {Keyboard}
+                {buttons}
                 <Counter />
             </div>
            
