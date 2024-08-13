@@ -41,8 +41,8 @@ h1{
 display: flex;
 flex-wrap: wrap;
 justify-content: center;
-padding: 30px;
-width: 670px;
+padding: 10px;
+width: 575px;
 gap: 10px 15px;
 }
 .boardBtn{
@@ -76,7 +76,7 @@ border-radius: 10px;
   padding: 30px;
   font-size: 35px;
   position: absolute;
-  top: 17rem;
+  top: 20rem;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
   color: green;
 }
@@ -84,11 +84,25 @@ border-radius: 10px;
   padding: 20px;
   font-size: 35px;
   position: absolute;
-  bottom: 23rem;
-  right: 21rem;
+  bottom: 20rem;
+  right: 39rem;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
   color: red;
 }
 .livesContainer{
   font-size: 20px;
+  
+}
+.rezCount{
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  justify-content: space-around;
+}
+.rezContainer{
+  padding: 10px;
+  border: 1px solid black;
+  font-size: 25px;
+  border-radius: 10px;
+  font-family: cursive;
 }

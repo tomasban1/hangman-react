@@ -3,9 +3,22 @@ import { randomWord } from "../words/GenerateWord";
 import { Hangman } from "../hangman/hangman";
 import { RestartBtn } from "../restartBtn/RestartBtn";
 
+let loseCount = [];
+let winCount = [];
+    
+const localScoreDataWin = localStorage.getItem('loseData')
+const localScoreDataLose = localStorage.getItem('winData')
+
+    if(localScoreDataWin !== null && localScoreDataLose !== null){
+        loseCount = JSON.parse(localScoreDataWin)
+        winCount = JSON.parse(localScoreDataLose)
+    }
+
+// let loseScore = 0;
+// let winScore = 0;
+
 
 export let gameOver = false; 
-   
 export function CheckLetter(){
 
     const keyboard = ['Q', 'W', 'E', 'R', 'T', 'Y', 
@@ -56,7 +69,8 @@ export function CheckLetter(){
     const CheckWin = () => { 
             if(randomWord.length === correctGuessed.length){
                 gameOver = true;
-
+                winCount.push(1)
+                localStorage.setItem('winData', JSON.stringify(winCount))
                 return <p>You win!</p>  
             }
        
@@ -68,6 +82,8 @@ export function CheckLetter(){
         if(count < 1){
             count = 0;
             gameOver = true;
+            loseCount.push(1)
+            localStorage.setItem('loseData', JSON.stringify(loseCount))
             // alert('Game over!')
             return <p className="loseContainer">Game over!</p>
         }else{
@@ -75,7 +91,8 @@ export function CheckLetter(){
                     
         }
     }
-    
+ 
+
     return (
         <>  
             <Hangman data={count} />
