@@ -2,6 +2,7 @@ import { useState } from "react";
 import { randomWord } from "../words/GenerateWord";
 import { Hangman } from "../hangman/hangman";
 
+
 export function CheckLetter(){
 
     const keyboard = ['Q', 'W', 'E', 'R', 'T', 'Y', 
@@ -9,37 +10,70 @@ export function CheckLetter(){
                     'F', 'G', 'H', 'J', 'K', 'L', 'Z', 
                     'X', 'C', 'V', 'B', 'N', 'M'];
     
-    
-    const [correct, setCorrect] = useState([]);
-    const hiddenWord = randomWord.map((letter, index) => correct.includes(letter) 
-    ? <ul key={index} className="wordLetter">{letter}</ul> 
-    : <ul key={index} className="wordLetter"></ul>);
+    let gameOver = false; 
+    let correctGuessed = [];
+    let isWin = false
 
-    
+    const [correct, setCorrect] = useState([]);
     let [count, setCount] = useState(6);
+
     function loseLife(){
         setCount(count - 1);
+    }
+    const [countWin, setCountWin] = useState(0);
+    function countWins(){
+        isWin === true ? setCountWin(countWin + 1) : countWin;
+    }
+
+     const hiddenWord = randomWord.map((letter, index) => correct.includes(letter) 
+    ? <ul key={index} className="wordLetter">{letter}</ul>
+    : <ul key={index} className="wordLetter"></ul>);
+
+    function hancleClick(e){
+        const key = e.target.innerText;
+        if(randomWord.includes(key) && !gameOver){
+            setCorrect([...correct, key])
+            e.currentTarget.classList.add('highlightCorrect')
+            
+        }else if(!gameOver){
+             e.currentTarget.classList.add('highlightIncorrect')
+            loseLife()
+        }
         
     }
     
-    const buttons = keyboard.map((letter) => <button onClick={(e) => {if(randomWord.includes(letter) && gameOver === false){
-                    setCorrect([...correct, letter])
-                    e.currentTarget.classList.add('highlightCorrect')
-                }else{if(gameOver === false){
-                    e.currentTarget.classList.add('highlightIncorrect')
-                    loseLife()}}}} className="boardBtn" key={letter}>{letter}</button>)
+    console.log(randomWord);
+    console.log(correctGuessed);
     
-    let gameOver = false; 
+    
+  
+    
+    const buttons = keyboard.map((letter, index) => <button onClick={hancleClick} className="boardBtn" key={index}>{letter}</button>);
+
+    
+    randomWord.map(letter => correct.includes(letter) ? correctGuessed.push(letter) : correctGuessed);
+    const CheckWin = () => { 
+            if(randomWord.length === correctGuessed.length){
+                gameOver = true; 
+                isWin = true; 
+                return <p>You win!</p>
+            }
+       
+    }
+
+    
+    
     const Counter = () => {
         if(count < 1){
             count = 0;
             gameOver = true;
+            // alert('Game over!')
             return <p>Game over!</p>
         }else{
             return <p>{count}</p>
         }
     }
-   console.log(count);
+   
    
     return (
         <>
@@ -50,6 +84,7 @@ export function CheckLetter(){
             <div className="keyboardContainer">
                 {buttons}
                 <Counter />
+                <CheckWin />
             </div>
            
         </>    
