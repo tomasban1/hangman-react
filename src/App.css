@@ -8,6 +8,7 @@ main{
   display: flex;
   flex-direction: column;
   align-items: center;
+  gap: 15px;
       
 }
 h1{
@@ -16,7 +17,8 @@ h1{
 .hangmanContainer{
   display: flex;
   justify-content: center;
-  padding: 50px;
+  padding: 25px;
+  position: relative;
 }
 .letterContainer{
   display: flex;
@@ -69,4 +71,24 @@ border-radius: 10px;
 }
 .highlightIncorrect{
   background-color: red;
+}
+.winContainer{
+  padding: 30px;
+  font-size: 35px;
+  position: absolute;
+  top: 17rem;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  color: green;
+}
+.loseContainer{
+  padding: 20px;
+  font-size: 35px;
+  position: absolute;
+  bottom: 23rem;
+  right: 21rem;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  color: red;
+}
+.livesContainer{
+  font-size: 20px;
 }

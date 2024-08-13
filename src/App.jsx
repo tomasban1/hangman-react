@@ -1,9 +1,11 @@
 import './App.css';
 import { CheckLetter } from './components/checkLetter/CheckLetter';
+import { RestartBtn } from './components/restartBtn/RestartBtn';
 
 
 function App() {
   
+
 
   return (
     <>
@@ -12,9 +14,7 @@ function App() {
       </header>
       <main>
         <CheckLetter />
-        <div>
-          <button className='restartBtn'>Start new game!</button>
-        </div>
+        <RestartBtn />
         
       </main>
     </>  

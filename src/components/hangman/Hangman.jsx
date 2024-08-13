@@ -23,7 +23,7 @@ export function Hangman(params){
     ? img5 
     : params.data === 0 
     ? img6
-    : img6
+    : img0
     
     return (
         <div className='hangmanContainer'>
