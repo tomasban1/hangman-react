@@ -1,6 +1,6 @@
 import './App.css';
 import { CheckLetter } from './components/checkLetter/CheckLetter';
-import { RestartBtn } from './components/restartBtn/RestartBtn';
+
 
 
 function App() {
@@ -14,7 +14,7 @@ function App() {
       </header>
       <main>
         <CheckLetter />
-        <RestartBtn />
+        
         
       </main>
     </>  

@@ -1,9 +1,10 @@
 import { useState } from "react";
 import { randomWord } from "../words/GenerateWord";
 import { Hangman } from "../hangman/hangman";
+import { RestartBtn } from "../restartBtn/RestartBtn";
 
 
-let gameOver = false; 
+export let gameOver = false; 
    
 export function CheckLetter(){
 
@@ -77,7 +78,6 @@ export function CheckLetter(){
     
     return (
         <>  
-            
             <Hangman data={count} />
             <div className="letterContainer">
                 {hiddenWord}
@@ -91,7 +91,7 @@ export function CheckLetter(){
             <div>
                 <LifeCounter  />
             </div>
-           
+            <RestartBtn data={count} />
         </>    
     );
 }
