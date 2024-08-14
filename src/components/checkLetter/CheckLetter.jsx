@@ -9,13 +9,10 @@ let winCount = [];
 const localScoreDataWin = localStorage.getItem('loseData')
 const localScoreDataLose = localStorage.getItem('winData')
 
-    if(localScoreDataWin !== null && localScoreDataLose !== null){
+    if(localScoreDataWin !== null || localScoreDataLose !== null){
         loseCount = JSON.parse(localScoreDataWin)
         winCount = JSON.parse(localScoreDataLose)
     }
-
-// let loseScore = 0;
-// let winScore = 0;
 
 
 export let gameOver = false; 

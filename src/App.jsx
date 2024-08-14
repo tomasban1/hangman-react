@@ -16,11 +16,8 @@ function App() {
       </header>
       <main>
         <CheckLetter />
-        
-        
       </main>
     </>  
-
   )
 }
 

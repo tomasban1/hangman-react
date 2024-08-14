@@ -9,8 +9,8 @@ export function Score(){
     return (
          <>
             <div className="rezCount">
-                <p className="rezContainer">Win count: {score2 === null ? 0 : (win.length / 2)}</p>
-                <p className="rezContainer">Lose count: {score1 === null ? 0 : (lose.length / 2)}</p>
+                <p className="rezContainer">Win count: {score2 === null ? 0 : win.length}</p>
+                <p className="rezContainer">Lose count: {score1 === null ? 0 : lose.length}</p>
             </div>
         </>
     );
