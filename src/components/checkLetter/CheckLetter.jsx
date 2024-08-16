@@ -3,20 +3,20 @@ import { randomWord } from "../words/GenerateWord";
 import { Hangman } from "../hangman/hangman";
 import { RestartBtn } from "../restartBtn/RestartBtn";
 
-let loseCount = [];
-let winCount = [];
-    
-const localScoreDataWin = localStorage.getItem('loseData')
-const localScoreDataLose = localStorage.getItem('winData')
 
-    if(localScoreDataWin !== null || localScoreDataLose !== null){
-        loseCount = JSON.parse(localScoreDataWin)
-        winCount = JSON.parse(localScoreDataLose)
-    }
+    
+// const localScoreDataWin = localStorage.getItem('loseData')
+// const localScoreDataLose = localStorage.getItem('winData')
+
+    // if(localScoreDataWin !== null || localScoreDataLose !== null){
+    //     loseCount = JSON.parse(localScoreDataWin)
+    //     winCount = JSON.parse(localScoreDataLose)
+    // }
 
 
 export let gameOver = false; 
-export function CheckLetter(){
+export function CheckLetter(params){
+    const { updateLoseCount, updateWinCount } = params;
 
     const keyboard = ['Q', 'W', 'E', 'R', 'T', 'Y', 
                     'U', 'I', 'O', 'P', 'A', 'S', 'D', 
@@ -38,18 +38,20 @@ export function CheckLetter(){
     : <ul key={index} className="wordLetter"></ul>);
 
 
+randomWord.map(letter => correct.includes(letter) ? correctGuessed.push(letter) : correctGuessed);
     function hancleClick(e){
         const key = e.target.innerText;
         if(randomWord.includes(key) && !gameOver){
             setCorrect([...correct, key]);
             e.currentTarget.classList.add('highlightCorrect');
-            
         }else if(!gameOver){
              e.currentTarget.classList.add('highlightIncorrect');
             loseLife();
+            
         }
         
     }
+ 
   
     const buttons = keyboard.map((letter, index) => <button onClick={hancleClick}  className="boardBtn" key={index}>{letter}</button>);
     
@@ -62,16 +64,17 @@ export function CheckLetter(){
     // }
     
 
-    randomWord.map(letter => correct.includes(letter) ? correctGuessed.push(letter) : correctGuessed);
+    
     const CheckWin = () => { 
             if(randomWord.length === correctGuessed.length){
                 gameOver = true;
-                winCount.push(1)
-                localStorage.setItem('winData', JSON.stringify(winCount))
+                
                 return <p>You win!</p>  
             }
        
     }
+
+    
 
     console.log(randomWord);
     
@@ -79,8 +82,6 @@ export function CheckLetter(){
         if(count < 1){
             count = 0;
             gameOver = true;
-            loseCount.push(1)
-            localStorage.setItem('loseData', JSON.stringify(loseCount))
             // alert('Game over!')
             return <p className="loseContainer">Game over!</p>
         }else{
@@ -105,7 +106,7 @@ export function CheckLetter(){
             <div>
                 <LifeCounter  />
             </div>
-            <RestartBtn data={count} />
+            <RestartBtn updateWinCount={updateWinCount} updateLoseCount={updateLoseCount} data={count} />
         </>    
     );
 }
