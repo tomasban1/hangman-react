@@ -47,7 +47,6 @@ randomWord.map(letter => correct.includes(letter) ? correctGuessed.push(letter) 
         }else if(!gameOver){
              e.currentTarget.classList.add('highlightIncorrect');
             loseLife();
-            
         }
         
     }
@@ -56,10 +55,9 @@ randomWord.map(letter => correct.includes(letter) ? correctGuessed.push(letter) 
     const buttons = keyboard.map((letter, index) => <button onClick={hancleClick}  className="boardBtn" key={index}>{letter}</button>);
     
     // function handleKeyboardClick(e){
-    //     if(keyboard.includes(e.target.innerText)){
-    //         console.log(e.target.innerText);
-            
-    //     }
+    //     console.log(e.key);
+        
+        
         
     // }
     
@@ -90,6 +88,15 @@ randomWord.map(letter => correct.includes(letter) ? correctGuessed.push(letter) 
         }
     }
  
+    window.addEventListener('keyup', (e) => {
+        const upperCase = e.key.toUpperCase();
+        if(randomWord.includes(upperCase) && !gameOver){
+            setCorrect([...correct, upperCase]);
+        }else if(!gameOver){
+            loseLife();
+        }
+        
+    })
 
     return (
         <>  

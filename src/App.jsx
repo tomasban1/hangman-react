@@ -7,7 +7,6 @@ import { Score } from './score/Score';
 
 
 function App() {
-  
  const [loseCount, setLoseCount] = useState(readLoseData());
 
  function updateLoseCount(){
@@ -26,7 +25,6 @@ function App() {
  },[loseCount]);
 
 
- 
  const [winCount, setWinCount] = useState(readWinData());
 
  function updateWinCount(){

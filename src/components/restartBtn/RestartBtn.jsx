@@ -10,7 +10,6 @@ export function RestartBtn(params){
         </div>
     );
   }else if(gameOver === true){
-    
       return (
         <div>
           <button onClick={() => {updateWinCount(), window.location.reload()}} className='restartBtn'>Start new game!</button>

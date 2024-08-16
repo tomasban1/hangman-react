@@ -106,3 +106,34 @@ border-radius: 10px;
   border-radius: 10px;
   font-family: cursive;
 }
+
+
+@media(max-width: 320px){
+  img{
+    width: 220px;
+  }
+  .letterContainer{
+    width: auto;
+  }
+  .keyboardContainer{
+    gap: 5px 10px;
+    width: 325px;
+    height: 170px;
+  }
+  .boardBtn{
+    display: flex;
+    justify-content: center;
+    width: 21px;
+    padding: 5px 8px;
+    align-items: center;
+  }
+  .winContainer{
+    top: 18rem;
+    left: 4rem;
+  }
+  .loseContainer{
+    bottom: 21rem;
+    right: 1rem;
+    font-size: 32px;
+  }
+}
