@@ -4,16 +4,6 @@ import { Hangman } from "../hangman/hangman";
 import { RestartBtn } from "../restartBtn/RestartBtn";
 
 
-    
-// const localScoreDataWin = localStorage.getItem('loseData')
-// const localScoreDataLose = localStorage.getItem('winData')
-
-    // if(localScoreDataWin !== null || localScoreDataLose !== null){
-    //     loseCount = JSON.parse(localScoreDataWin)
-    //     winCount = JSON.parse(localScoreDataLose)
-    // }
-
-
 export let gameOver = false; 
 export function CheckLetter(params){
     const { updateLoseCount, updateWinCount } = params;
@@ -54,15 +44,6 @@ randomWord.map(letter => correct.includes(letter) ? correctGuessed.push(letter) 
   
     const buttons = keyboard.map((letter, index) => <button onClick={hancleClick}  className="boardBtn" key={index}>{letter}</button>);
     
-    // function handleKeyboardClick(e){
-    //     console.log(e.key);
-        
-        
-        
-    // }
-    
-
-    
     const CheckWin = () => { 
             if(randomWord.length === correctGuessed.length){
                 gameOver = true;
@@ -71,8 +52,6 @@ randomWord.map(letter => correct.includes(letter) ? correctGuessed.push(letter) 
             }
        
     }
-
-    
 
     console.log(randomWord);
     
@@ -88,10 +67,16 @@ randomWord.map(letter => correct.includes(letter) ? correctGuessed.push(letter) 
         }
     }
  
+    const buttonDom = document.querySelectorAll('.boardBtn');
+    
+    
+
     window.addEventListener('keyup', (e) => {
         const upperCase = e.key.toUpperCase();
         if(randomWord.includes(upperCase) && !gameOver){
             setCorrect([...correct, upperCase]);
+            console.log(e.target);
+            
         }else if(!gameOver){
             loseLife();
         }

@@ -1,1 +1,1 @@
-export const words = ['BOOK', 'CATFISH', 'JUSTICE', 'INTENSE', 'CRIME', 'CAR', 'FATAL', 'POLICE'];
+export const words = ['BOOK', 'CATFISH', 'JUSTICE', 'INTENSE', 'CRIME', 'CAR', 'FATAL', 'POLICE', 'CODEWARS', 'JAVASCRIPT', 'REACT', 'SYNTAX', 'ARRAY', 'LITHUANIA', 'HANGMAN'];
