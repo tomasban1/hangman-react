@@ -28,8 +28,8 @@ export function CheckLetter(params){
     : <ul key={index} className="wordLetter"></ul>);
 
 
-randomWord.map(letter => correct.includes(letter) ? correctGuessed.push(letter) : correctGuessed);
-    function hancleClick(e){
+
+    function handleClick(e){
         const key = e.target.innerText;
         if(randomWord.includes(key) && !gameOver){
             setCorrect([...correct, key]);
@@ -42,41 +42,32 @@ randomWord.map(letter => correct.includes(letter) ? correctGuessed.push(letter) 
     }
  
   
-    const buttons = keyboard.map((letter, index) => <button onClick={hancleClick}  className="boardBtn" key={index}>{letter}</button>);
+    const buttons = keyboard.map((letter, index) => <button onClick={handleClick}  className="boardBtn" key={index}>{letter}</button>);
     
-    const CheckWin = () => { 
+    randomWord.map(letter => correct.includes(letter) ? correctGuessed.push(letter) : correctGuessed);
+    const CheckRez = () => { 
             if(randomWord.length === correctGuessed.length){
                 gameOver = true;
-                
-                return <p>You win!</p>  
+                return (
+                    <div className="winContainer">
+                        <p>You win!</p>  
+                    </div>);
             }
-       
-    }
-
-    console.log(randomWord);
-    
-    const LifeCounter = () => {
-        if(count < 1){
+            if(count < 1){
             count = 0;
             gameOver = true;
-            // alert('Game over!')
             return <p className="loseContainer">Game over!</p>
         }else{
             return <p className="livesContainer">Lives left: {count}</p>
                     
         }
     }
- 
-    const buttonDom = document.querySelectorAll('.boardBtn');
-    
     
 
     window.addEventListener('keyup', (e) => {
         const upperCase = e.key.toUpperCase();
         if(randomWord.includes(upperCase) && !gameOver){
             setCorrect([...correct, upperCase]);
-            console.log(e.target);
-            
         }else if(!gameOver){
             loseLife();
         }
@@ -92,11 +83,8 @@ randomWord.map(letter => correct.includes(letter) ? correctGuessed.push(letter) 
             <div className="keyboardContainer">
                 {buttons}
             </div>
-            <div className="winContainer">
-                <CheckWin />     
-            </div>
             <div>
-                <LifeCounter  />
+                <CheckRez />  
             </div>
             <RestartBtn updateWinCount={updateWinCount} updateLoseCount={updateLoseCount} data={count} />
         </>    

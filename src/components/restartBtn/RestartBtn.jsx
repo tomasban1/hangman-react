@@ -8,7 +8,7 @@ export function RestartBtn(params){
     return (
         <div className="show">
           <p style={{fontWeight: "bold"}}>The word was: {randomWord}</p>
-          <button onClick={() => {updateLoseCount(), window.location.reload()}} className='restartBtn'>Start new game!</button>
+          <button onClick={() => {updateLoseCount(), window.location.reload()}} className='restartBtn'>Give it another try!</button>
         </div>
     );
   }else if(gameOver === true){
