@@ -2,7 +2,7 @@
 import { useEffect, useState } from 'react';
 import './App.css';
 import { CheckLetter } from './components/checkLetter/CheckLetter';
-import { Score } from './score/Score';
+import { Score } from './components/score/Score';
 
 
 

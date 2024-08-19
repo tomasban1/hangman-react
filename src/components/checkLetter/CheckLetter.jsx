@@ -23,7 +23,8 @@ export function CheckLetter(params){
         setCount(count - 1);
     }
     
-     const hiddenWord = randomWord.map((letter, index) => correct.includes(letter) 
+     
+    const hiddenWord = randomWord.map((letter, index) => correct.includes(letter) 
     ? <ul key={index} className="wordLetter">{letter}</ul>
     : <ul key={index} className="wordLetter"></ul>);
 
