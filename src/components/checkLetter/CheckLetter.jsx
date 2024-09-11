@@ -43,7 +43,7 @@ export function CheckLetter(params){
     }
  
   
-    const buttons = keyboard.map((letter, index) => <button onClick={handleClick} className={correct.includes(letter) ? 'highlightCorrect boardBtn' : 'boardBtn'} key={index}>{letter}</button>);
+    const buttons = keyboard.map((letter, index) => <button onClick={handleClick} className='boardBtn' id="b" key={index}>{letter}</button>);
     
     randomWord.map(letter => correct.includes(letter) ? correctGuessed.push(letter) : correctGuessed);
     const CheckRez = () => { 
@@ -64,16 +64,17 @@ export function CheckLetter(params){
         }
     }
   
-    window.addEventListener('keyup', (e) => {
-        const upperCase = e.key.toUpperCase();
-        if(randomWord.includes(upperCase) && !gameOver){
-            setCorrect([...correct, upperCase]);
-        }else if(!gameOver){
-            e.target.classList.add('highlightIncorrect');
-            loseLife();
-        }
+    
+    // window.addEventListener('keyup', (e) => {
+    //     const upperCase = e.key.toUpperCase();
+    //     if(randomWord.includes(upperCase) && !gameOver){
+    //         setCorrect([...correct, upperCase]);
+    //     }else if(!gameOver){
+    //         loseLife();
+    //         setColor('red')
+    //     }
         
-    })
+    // })
 
     return (
         <>  
