@@ -46,7 +46,7 @@ function App() {
   return (
     <>
       <header>
-        <h1>Hangman</h1>
+        <h1>H a n g m a n</h1>
         <Score />
       </header>
       <main>

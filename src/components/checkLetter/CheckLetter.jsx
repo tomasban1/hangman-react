@@ -16,8 +16,10 @@ export function CheckLetter(params){
    
     let correctGuessed = [];
 
+
     const [correct, setCorrect] = useState([]);
     let [count, setCount] = useState(6);
+  
     
     function loseLife(){
         setCount(count - 1);
@@ -29,7 +31,6 @@ export function CheckLetter(params){
     : <ul key={index} className="wordLetter"></ul>);
 
 
-
     function handleClick(e){
         const key = e.target.innerText;
         if(randomWord.includes(key) && !gameOver){
@@ -37,13 +38,14 @@ export function CheckLetter(params){
             e.currentTarget.classList.add('highlightCorrect');
         }else if(!gameOver){
              e.currentTarget.classList.add('highlightIncorrect');
-            loseLife();
-        }
-        
+             e.target.disabled = true;
+             loseLife();   
+        } 
     }
  
   
-    const buttons = keyboard.map((letter, index) => <button onClick={handleClick} className='boardBtn' id="b" key={index}>{letter}</button>);
+    const buttons = keyboard.map((letter, index) => <button onClick={handleClick} disabled={false} className='boardBtn' id="b" key={index}>{letter}</button>);
+     
     
     randomWord.map(letter => correct.includes(letter) ? correctGuessed.push(letter) : correctGuessed);
     const CheckRez = () => { 
@@ -59,22 +61,10 @@ export function CheckLetter(params){
             gameOver = true;
             return <p className="loseContainer">Game over!</p>
         }else{
-            return <p className="livesContainer">Lives left: {count}</p>
-                    
+            return <p className="livesContainer">Lives left: {count}</p>     
         }
     }
   
-    
-    // window.addEventListener('keyup', (e) => {
-    //     const upperCase = e.key.toUpperCase();
-    //     if(randomWord.includes(upperCase) && !gameOver){
-    //         setCorrect([...correct, upperCase]);
-    //     }else if(!gameOver){
-    //         loseLife();
-    //         setColor('red')
-    //     }
-        
-    // })
 
     return (
         <>  

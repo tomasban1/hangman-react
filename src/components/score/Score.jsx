@@ -13,8 +13,8 @@ export function Score(){
     return (
          <>
             <div className="rezCount">
-                <p className="rezContainer">Win count: {win}</p>
-                <p className="rezContainer">Lose count: {lose}</p>
+                <p className="scoreWinContainer">Win count: {win}</p>
+                <p className="scoreLoseContainer">Lose count: {lose}</p>
             </div>
         </>
     );

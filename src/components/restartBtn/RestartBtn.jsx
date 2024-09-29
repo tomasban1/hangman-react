@@ -3,8 +3,8 @@ import { randomWord } from "../words/GenerateWord";
 
 
 export function RestartBtn(params){
-  const { updateWinCount, updateLoseCount } = params;
-   if(params.data === 0){
+  const { updateWinCount, updateLoseCount, data } = params;
+   if(data === 0){
     return (
         <div className="show">
           <p style={{fontWeight: "bold"}}>The word was: {randomWord}</p>
